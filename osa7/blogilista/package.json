@@ -1,0 +1,51 @@
+{
+  "name": "fullstack-open-2019-osa4",
+  "version": "1.0.0",
+  "description": "blogilista",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "start:test": "cross-env NODE_ENV=test node index.js",
+    "watch": "cross-env NODE_ENV=development nodemon --ignore 'frontend/' index.js",
+    "test": "cross-env NODE_ENV=test jest --verbose",
+    "build:ui": "rm -rf build && cd frontend && npm run build --prod && cp -r build ../",
+    "deploy": "git push heroku master",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
+    "logs:prod": "heroku logs --tail",
+    "lint": "eslint .",
+    "cypress:open": "cypress open"
+  },
+  "author": "Sampo Hippeläinen",
+  "license": "ISC",
+  "dependencies": {
+    "array-unique": "^0.3.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.12",
+    "mongoose-unique-validator": "^2.0.3",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "babel-eslint": "^10.0.1",
+    "cross-env": "^5.2.0",
+    "cypress": "^3.3.1",
+    "eslint": "^5.16.0",
+    "eslint-config-react-app": "^4.0.1",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2",
+    "typescript": "^3.5.1"
+  }
+}
